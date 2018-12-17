@@ -5,7 +5,7 @@ using UnityEngine;
 public class CubeCircle : MonoBehaviour {
     public float scale = 10;
     List<GameObject> cyls = new List<GameObject>();
-    public float radius = 100;
+    public float radius = 35;
 
 	// Use this for initialization
 	void Start () {

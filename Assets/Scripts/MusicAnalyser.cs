@@ -5,13 +5,11 @@ using UnityEngine.Audio;
 
 [RequireComponent(typeof(AudioSource))]
 public class MusicAnalyser : MonoBehaviour {
-
     AudioSource audio;
     public static int frameSize = 512;
     public static float[] samples = new float[512];
     public static float[] bands;
-    private AudioClip clip;
-    private AudioMixerGroup amgMaster;
+    public AudioClip clip;
     public float binWidth;
     public float sampleRate;
 
@@ -21,9 +19,7 @@ public class MusicAnalyser : MonoBehaviour {
         samples = new float[frameSize];
         bands = new float[(int)Mathf.Log(frameSize, 2)];
 
-
         audio.clip = clip;
-        audio.outputAudioMixerGroup = amgMaster;
         audio.Play();
     }
 
