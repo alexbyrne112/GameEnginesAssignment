@@ -18,9 +18,11 @@ public class CubeCircle : MonoBehaviour {
         transform.Rotate(Vector3.up * Time.deltaTime*20);
         for (int i = 0; i < cyls.Count; i++)
         {
-            Vector3 pos2 = cyls[i].transform.localScale;
-            pos2.y = Mathf.Lerp(pos2.y, 1 + (MusicAnalyser.bands[i] * scale), Time.deltaTime * 3.0f);
-            cyls[i].transform.localScale = pos2;
+            Vector3 ts = cyls[i].transform.localScale;
+            ts.y = Mathf.Lerp(ts.y, 1 + (MusicAnalyser.bands[i] * scale), Time.deltaTime * 3.0f);
+            ts.x = Mathf.Lerp(ts.y, 1 + (MusicAnalyser.bands[i] * scale), Time.deltaTime * 3.0f);
+            ts.z = Mathf.Lerp(ts.y, 1 + (MusicAnalyser.bands[i] * scale), Time.deltaTime * 3.0f);
+            cyls[i].transform.localScale = ts;
         }
     }
 
@@ -29,7 +31,7 @@ public class CubeCircle : MonoBehaviour {
         float theta = (Mathf.PI * 2.0f) / (float)MusicAnalyser.bands.Length;
         for(int i = 0; i < MusicAnalyser.bands.Length; i++)
         {
-            Vector3 pos = new Vector3(Mathf.Sin(theta * i) * 5, 0, Mathf.Cos(theta * i) * 5);
+            Vector3 pos = new Vector3(Mathf.Sin(theta * i) * 30, 0, Mathf.Cos(theta * i) * 30);
             pos = transform.TransformPoint(pos);
             Quaternion quat = Quaternion.AngleAxis(theta * i * Mathf.Rad2Deg, Vector3.up);
             quat = transform.rotation * quat;
@@ -38,7 +40,7 @@ public class CubeCircle : MonoBehaviour {
             GameObject cyl = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
             cyl.transform.SetPositionAndRotation(pos, quat); ;
             cyl.transform.parent = this.transform;
-            cyl.GetComponent<Renderer>().material.color = new Color(i + (float)MusicAnalyser.bands.Length, 0, 0);
+            cyl.GetComponent<Renderer>().material.color = new Color(i + (float)MusicAnalyser.bands.Length, 1, 1);
             cyls.Add(cyl);
         }
     }
