@@ -18,8 +18,15 @@ public class TargetMove : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        Vector3 toDest = destinations[current] - transform.position;
+        if(toDest.magnitude < 1)
+        {
+            current = (current + 1) % destinations.Count;
+        }
+        toDest.Normalize();
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(toDest), Time.deltaTime * 5);
+        transform.Translate(toDest * speed * Time.deltaTime, Space.World);
+    }
 
     private void Awake()
     {
