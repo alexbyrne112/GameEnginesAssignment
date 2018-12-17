@@ -19,6 +19,13 @@ public class CubeCircle : MonoBehaviour {
 
     void CreateCubeCircle()
     {
-
+        float theta = (Mathf.PI * 2.0f) / (float)MusicAnalyser.bands.Length;
+        for(int i = 0; i < MusicAnalyser.bands.Length; i++)
+        {
+            Vector3 pos = new Vector3(Mathf.Sin(theta * i) * radius, 0, Mathf.Cos(theta * i) * radius);
+            pos = transform.TransformPoint(pos);
+            Quaternion quat = Quaternion.AngleAxis(theta * i * Mathf.Rad2Deg, Vector3.up);
+            quat = transform.rotation * quat;
+        }
     }
 }
