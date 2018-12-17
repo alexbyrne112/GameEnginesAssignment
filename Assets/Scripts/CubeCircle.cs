@@ -26,6 +26,12 @@ public class CubeCircle : MonoBehaviour {
             pos = transform.TransformPoint(pos);
             Quaternion quat = Quaternion.AngleAxis(theta * i * Mathf.Rad2Deg, Vector3.up);
             quat = transform.rotation * quat;
+
+            GameObject cyl = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            cyl.transform.SetPositionAndRotation(pos, quat); ;
+            cyl.transform.parent = this.transform;
+            cyl.GetComponent<Renderer>().material.color = Color.HSVToRGB(i / (float)MusicAnalyser.bands.Length, 1, 1);
+            cyls.Add(cyl);
         }
     }
 }
