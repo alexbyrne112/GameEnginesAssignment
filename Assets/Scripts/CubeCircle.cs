@@ -14,7 +14,12 @@ public class CubeCircle : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		for(int i = 0; i < cyls.Count; i++)
+        {
+            Vector3 pos2 = cyls[i].transform.localScale;
+            pos2.y = Mathf.Lerp(pos2.y, 1 + (MusicAnalyser.bands[i] * scale), Time.deltaTime * 3.0f);
+            cyls[i].transform.localScale = pos2;
+        }
 	}
 
     void CreateCubeCircle()
