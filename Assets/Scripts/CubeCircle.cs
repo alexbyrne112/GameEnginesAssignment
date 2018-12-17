@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CubeCircle : MonoBehaviour {
     public float scale = 10;
-    List<GameObject> cyls = new List<GameObject>();
+    List<GameObject> sphs = new List<GameObject>();
     public float radius = 1;
-    public static GameObject CylinderPar;
+    //public static GameObject CylinderPar;
 
     // Use this for initialization
     void Start () {
@@ -16,13 +16,13 @@ public class CubeCircle : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         transform.Rotate(Vector3.up * Time.deltaTime*20);
-        for (int i = 0; i < cyls.Count; i++)
+        for (int i = 0; i < sphs.Count; i++)
         {
-            Vector3 ts = cyls[i].transform.localScale;
+            Vector3 ts = sphs[i].transform.localScale;
             ts.y = Mathf.Lerp(ts.y, 1 + (MusicAnalyser.bands[i] * scale), Time.deltaTime * 3.0f);
             ts.x = Mathf.Lerp(ts.y, 1 + (MusicAnalyser.bands[i] * scale), Time.deltaTime * 3.0f);
             ts.z = Mathf.Lerp(ts.y, 1 + (MusicAnalyser.bands[i] * scale), Time.deltaTime * 3.0f);
-            cyls[i].transform.localScale = ts;
+            sphs[i].transform.localScale = ts;
         }
     }
 
@@ -37,11 +37,12 @@ public class CubeCircle : MonoBehaviour {
             quat = transform.rotation * quat;
 
             //GameObject cyl = Instantiate(CylinderPar, pos, quat);
-            GameObject cyl = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
-            cyl.transform.SetPositionAndRotation(pos, quat); ;
-            cyl.transform.parent = this.transform;
-            cyl.GetComponent<Renderer>().material.color = new Color(i + (float)MusicAnalyser.bands.Length, 1, 1);
-            cyls.Add(cyl);
+            GameObject sph = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            sph.transform.SetPositionAndRotation(pos, quat); ;
+            sph.transform.parent = this.transform;
+            sph.GetComponent<Renderer>().material.color = new Color(i + (float)MusicAnalyser.bands.Length, 1, 1);
+            sph.AddComponent<SphereCollider>();
+            sphs.Add(sph);
         }
     }
 }

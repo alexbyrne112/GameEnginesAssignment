@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ParticleSeek : MonoBehaviour {
     public Transform target;
-    public float force = 10.0f;
+    public float force = 100.0f;
     ParticleSystem ps;
 
 	// Use this for initialization
