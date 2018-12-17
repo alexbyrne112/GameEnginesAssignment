@@ -41,6 +41,18 @@ public class MusicAnalyser : MonoBehaviour {
 
     void GetBands()
     {
-   
+        for(int i= 0; i< bands.Length; i++)
+        {
+            int start = (int)Mathf.Pow(2, i) - 1;
+            int width = (int)Mathf.Pow(2, i);
+            int end = start + width;
+            float average = 0;
+            for(int j = 0; j< end; j++)
+            {
+                average += samples[j] * (j + 1);
+            }
+            average /= (float)width;
+            bands[i] = average;
+        }
     }
 }
