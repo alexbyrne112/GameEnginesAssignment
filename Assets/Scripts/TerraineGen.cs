@@ -25,7 +25,7 @@ public class TerraineGen : MonoBehaviour {
         //terrain.renderer.material = newMat;
         offsetX += Time.deltaTime;//update offset to make terrain move 
         //depth = (MusicAnalyser.bands[4] * 20)+ 10;
-        depth = Mathf.Lerp(depth, 10 + (MusicAnalyser.bands[4] * 20), Time.deltaTime * 6.0f);
+        depth = Mathf.Lerp(depth, 10 + (MusicAnalyser.bands[4] * 30), Time.deltaTime * 10.0f);
     }
 
     TerrainData GenerateTerrain(TerrainData terrrainData)//returns terrain data

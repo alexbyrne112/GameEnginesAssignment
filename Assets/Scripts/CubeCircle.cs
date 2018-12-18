@@ -6,6 +6,7 @@ public class CubeCircle : MonoBehaviour {
     public float scale = 10;
     List<GameObject> sphs = new List<GameObject>();
     public float radius = 1;
+    public GameObject OrbPrefab;
     //public static GameObject CylinderPar;
 
     // Use this for initialization
@@ -38,6 +39,7 @@ public class CubeCircle : MonoBehaviour {
 
             //GameObject cyl = Instantiate(CylinderPar, pos, quat);
             GameObject sph = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            //GameObject sph = (GameObject)Instantiate(OrbPrefab);
             sph.transform.SetPositionAndRotation(pos, quat); ;
             sph.transform.parent = this.transform;
             sph.GetComponent<Renderer>().material.color = new Color(i + (float)MusicAnalyser.bands.Length, 1, 1);
