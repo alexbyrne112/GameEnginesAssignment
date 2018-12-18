@@ -9,6 +9,12 @@ public class TerraineGen : MonoBehaviour {
     public float offsetX = 100f;
     public float offsetY = 100f;
 
+    private void Start()
+    {
+        offsetX = Random.RandomRange(0f, 9999f);
+        offsetY = Random.RandomRange(0f, 9999f);
+    }
+
     private void Update()
     {
         Terrain terrain = GetComponent<Terrain>();
