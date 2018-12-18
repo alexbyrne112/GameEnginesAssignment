@@ -15,7 +15,7 @@ public class CubeCircle : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Rotate(Vector3.up * Time.deltaTime*20);
+        transform.Rotate(Vector3.down * Time.deltaTime*20);
         for (int i = 0; i < sphs.Count; i++)
         {
             Vector3 ts = sphs[i].transform.localScale;
