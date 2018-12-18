@@ -22,5 +22,22 @@ public class TerraineGen : MonoBehaviour {
     }
 
     float[,] genHeights()
+    {
+        float[,] heights = new float[width, height];//each point has a float set to it (grid)
+        for (int i = 0; i < width; i++)
+        {
+            for (int j = 0; j < height; j++)
+            {
+                heights[i, j] = calcHeight(i, j);//perlin noise function 
+            }
+        }
+        return heights;
+    }
+
+    //calculate height at x and y position
+    float calcHeight(int i, int j)
+    {
+
+    }
 }
 
