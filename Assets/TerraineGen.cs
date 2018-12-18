@@ -6,8 +6,10 @@ public class TerraineGen : MonoBehaviour {
     public int depth = 20;
 
     public float scale = 20f;
+    public float offsetX = 100f;
+    public float offsetY = 100f;
 
-    private void Start()
+    private void Update()
     {
         Terrain terrain = GetComponent<Terrain>();
         terrain.terrainData = GenerateTerrain(terrain.terrainData);//terrain data = newly generated terrain based off current terrain data
@@ -39,8 +41,8 @@ public class TerraineGen : MonoBehaviour {
     float calcHeight(int i, int j)
     {
         //take coordinates and convert them to noise map coordinates
-        float x = (float)i / width * scale;
-        float y = (float)j / height * scale;
+        float x = (float)i / width * scale + offsetX;
+        float y = (float)j / height * scale + offsetY;
 
         return Mathf.PerlinNoise(x, y);//return value of the perlin noise function at those coordinates and set them into the array
     }
