@@ -38,8 +38,8 @@ public class CubeCircle : MonoBehaviour {
             quat = transform.rotation * quat;
 
             //GameObject cyl = Instantiate(CylinderPar, pos, quat);
-            GameObject sph = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            //GameObject sph = (GameObject)Instantiate(OrbPrefab);
+            //GameObject sph = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            GameObject sph = Instantiate(OrbPrefab);
             sph.transform.SetPositionAndRotation(pos, quat); ;
             sph.transform.parent = this.transform;
             sph.GetComponent<Renderer>().material.color = new Color(i + (float)MusicAnalyser.bands.Length, 1, 1);
