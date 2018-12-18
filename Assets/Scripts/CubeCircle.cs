@@ -40,6 +40,7 @@ public class CubeCircle : MonoBehaviour {
             
             //GameObject sph = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             GameObject sph = Instantiate(OrbPrefab);
+            sph.SetActive(true);
             //sph.AddComponent<Renderer>;
             sph.transform.SetPositionAndRotation(pos, quat); ;
             sph.transform.parent = this.transform;
