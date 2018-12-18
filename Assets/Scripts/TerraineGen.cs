@@ -3,7 +3,7 @@
 public class TerraineGen : MonoBehaviour {
     public int width = 256;
     public int height = 256;//length
-    public int depth = 20;
+    public float depth = 20f;
 
     public float scale = 20f;
     public float offsetX = 100f;
@@ -23,7 +23,8 @@ public class TerraineGen : MonoBehaviour {
 
         //Material newMat = Resources.Load("material", typeof(Material)) as Material;
         //terrain.renderer.material = newMat;
-        offsetX += Time.deltaTime + MusicAnalyser.bands[3];//update offset to make terrain move
+        offsetX += Time.deltaTime;//update offset to make terrain move 
+        depth = (MusicAnalyser.bands[4] * 20)+ 10; 
     }
 
     TerrainData GenerateTerrain(TerrainData terrrainData)//returns terrain data
