@@ -32,14 +32,15 @@ public class CubeCircle : MonoBehaviour {
         float theta = (Mathf.PI * 2.0f) / (float)MusicAnalyser.bands.Length;
         for(int i = 0; i < MusicAnalyser.bands.Length; i++)
         {
+            Debug.Log(i);
             Vector3 pos = new Vector3(Mathf.Sin(theta * i) * 30, 0, Mathf.Cos(theta * i) * 30);
             pos = transform.TransformPoint(pos);
             Quaternion quat = Quaternion.AngleAxis(theta * i * Mathf.Rad2Deg, Vector3.up);
             quat = transform.rotation * quat;
-
-            //GameObject cyl = Instantiate(CylinderPar, pos, quat);
+            
             //GameObject sph = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             GameObject sph = Instantiate(OrbPrefab);
+            //sph.AddComponent<Renderer>;
             sph.transform.SetPositionAndRotation(pos, quat); ;
             sph.transform.parent = this.transform;
             sph.GetComponent<Renderer>().material.color = new Color(i + (float)MusicAnalyser.bands.Length, 1, 1);
