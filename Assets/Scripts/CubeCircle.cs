@@ -19,11 +19,15 @@ public class CubeCircle : MonoBehaviour {
         transform.Rotate(Vector3.down * Time.deltaTime*20);
         for (int i = 0; i < sphs.Count; i++)
         {
+            /*
             Vector3 ts = sphs[i].transform.localScale;
             ts.y = Mathf.Lerp(ts.y, 1 + (MusicAnalyser.bands[i] * scale), Time.deltaTime * 3.0f);
             ts.x = Mathf.Lerp(ts.y, 1 + (MusicAnalyser.bands[i] * scale), Time.deltaTime * 3.0f);
             ts.z = Mathf.Lerp(ts.y, 1 + (MusicAnalyser.bands[i] * scale), Time.deltaTime * 3.0f);
-            sphs[i].transform.localScale = ts;
+            sphs[i].transform.localScale = ts;*/
+            Vector3 OrbPos = sphs[i].transform.position;
+            OrbPos.y = Mathf.Lerp(OrbPos.y, 1 + (MusicAnalyser.bands[i] * scale), Time.deltaTime);
+            sphs[i].transform.position = OrbPos;
         }
     }
 
