@@ -37,7 +37,12 @@ public class TerraineGen : MonoBehaviour {
     //calculate height at x and y position
     float calcHeight(int i, int j)
     {
+        //take coordinates and convert them to noise map coordinates
+        float x = i / width * scale;
+        float y = j / height * scale;
 
+        return Mathf.PerlinNoise(x, y);//return value of the perlin noise function at those coordinates and set them into the array
     }
+
 }
 
