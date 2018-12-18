@@ -11,6 +11,7 @@ public class TerraineGen : MonoBehaviour {
 
     private void Start()
     {
+        //random numbers for offsets
         offsetX = Random.RandomRange(0f, 9999f);
         offsetY = Random.RandomRange(0f, 9999f);
     }
@@ -19,6 +20,8 @@ public class TerraineGen : MonoBehaviour {
     {
         Terrain terrain = GetComponent<Terrain>();
         terrain.terrainData = GenerateTerrain(terrain.terrainData);//terrain data = newly generated terrain based off current terrain data
+
+        offsetX += Time.deltaTime;//update offset to make terrain move
     }
 
     TerrainData GenerateTerrain(TerrainData terrrainData)//returns terrain data
