@@ -15,6 +15,7 @@ public class TerraineGen : MonoBehaviour {
 
     TerrainData GenerateTerrain(TerrainData terrrainData)//returns terrain data
     {
+        terrrainData.heightmapResolution = width + 1;
         terrrainData.size = new Vector3(width, depth, height);//populate dimensions
         terrrainData.SetHeights(0, 0, genHeights());
 
