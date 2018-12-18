@@ -13,9 +13,14 @@ public class TerraineGen : MonoBehaviour {
         terrain.terrainData = GenerateTerrain(terrain.terrainData);//terrain data = newly generated terrain based off current terrain data
     }
 
-    TerrainData GenerateTerrain()
+    TerrainData GenerateTerrain(TerrainData terrrainData)//returns terrain data
     {
+        terrrainData.size = new Vector3(width, depth, height);//populate dimensions
+        terrrainData.SetHeights(0, 0, genHeights());
 
+        return terrrainData;
     }
+
+    float[,] genHeights()
 }
 
