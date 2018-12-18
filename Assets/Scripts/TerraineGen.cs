@@ -23,7 +23,7 @@ public class TerraineGen : MonoBehaviour {
 
         //Material newMat = Resources.Load("material", typeof(Material)) as Material;
         //terrain.renderer.material = newMat;
-        offsetX += Time.deltaTime;//update offset to make terrain move
+        offsetX += Time.deltaTime + MusicAnalyser.bands[3];//update offset to make terrain move
     }
 
     TerrainData GenerateTerrain(TerrainData terrrainData)//returns terrain data
