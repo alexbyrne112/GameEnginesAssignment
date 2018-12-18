@@ -40,8 +40,7 @@ public class CubeCircle : MonoBehaviour {
             
             //GameObject sph = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             GameObject sph = Instantiate(OrbPrefab);
-            sph.SetActive(true);
-            //sph.AddComponent<Renderer>;
+            sph.AddComponent<MeshRenderer>();
             sph.transform.SetPositionAndRotation(pos, quat); ;
             sph.transform.parent = this.transform;
             sph.GetComponent<Renderer>().material.color = new Color(i + (float)MusicAnalyser.bands.Length, 1, 1);
