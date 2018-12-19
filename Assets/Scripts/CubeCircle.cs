@@ -5,6 +5,7 @@ using UnityEngine;
 public class CubeCircle : MonoBehaviour {
     public float scale = 10;
     List<GameObject> sphs = new List<GameObject>();
+    GameObject sphere;
     public float radius = 1;
     public GameObject OrbPrefab;
 
@@ -13,6 +14,7 @@ public class CubeCircle : MonoBehaviour {
     // Use this for initialization
     void Start () {
         CreateCubeCircle();
+        CreateSphere();
     }
 
     void CreateCubeCircle()
@@ -30,11 +32,22 @@ public class CubeCircle : MonoBehaviour {
             sph.AddComponent<MeshRenderer>();
             sph.transform.SetPositionAndRotation(pos, quat); ;
             sph.transform.parent = this.transform;
-            sph.GetComponent<Renderer>().material.color = new Color(i + (float)MusicAnalyser.bands.Length, 1, 1);
-            sph.AddComponent<SphereCollider>();
+            //sph.GetComponent<Renderer>().material.color = new Color(i + (float)MusicAnalyser.bands.Length, 1, 1);
+            //sph.AddComponent<SphereCollider>();
             sphs.Add(sph);
         }
     }
+
+    void CreateSphere()
+    {
+        Vector3 Spos = new Vector3(0, 0, 0);
+        sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        sphere.transform.position = Spos;
+        sphere.transform.parent = this.transform;
+        sphere.transform.localScale = new Vector3(10,10,10);
+        sphere.GetComponent<Renderer>().material.color = new Color((float)MusicAnalyser.bands.Length, 1, 1);
+    }
+
 
     // Update is called once per frame
     void Update () {
