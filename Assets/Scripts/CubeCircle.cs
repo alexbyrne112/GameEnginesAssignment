@@ -51,11 +51,19 @@ public class CubeCircle : MonoBehaviour {
             ts.x = Mathf.Lerp(ts.y, 1 + (MusicAnalyser.bands[i] * scale), Time.deltaTime * 3.0f);
             ts.z = Mathf.Lerp(ts.y, 1 + (MusicAnalyser.bands[i] * scale), Time.deltaTime * 3.0f);
             sphs[i].transform.localScale = ts;*/
-            foreach (ParticleSystem p in parts)
+            for (int s =0; s < parts.Length; s++) 
             {
-                var main = p.main;
-                //StartSize
-                main.startSize = main.startSize;
+                ParticleSystem p = parts[s];
+                Debug.Log(i);
+                Debug.Log(s);
+                var SOL = p.sizeOverLifetime;
+                SOL.enabled = true;
+
+                AnimationCurve curve = new AnimationCurve();
+                curve.AddKey(0.0f, 0.0f);
+                curve.AddKey(1.0f, 1.0f);
+
+                SOL.size = new ParticleSystem.MinMaxCurve(1, (MusicAnalyser.bands[i]* 5));
                 //ScaleParticleValues(p);
             }
             Vector3 OrbPos = sphs[i].transform.position;
@@ -63,49 +71,4 @@ public class CubeCircle : MonoBehaviour {
             sphs[i].transform.position = OrbPos;
         }
     }
-
-    private void ScaleParticleValues(ParticleSystem ps)
-    {
-        //BASE MODULE
-        var main = ps.main;
-        //StartSize
-        ParticleSystem.MinMaxCurve sSize = main.startSize;
-        main.startSize = MultiplyMinMaxCurve(sSize, scale);
-        //Gravity
-        ParticleSystem.MinMaxCurve sGrav = main.gravityModifier;
-        main.gravityModifier = MultiplyMinMaxCurve(sGrav, scale);
-        //StartSpeed
-        ParticleSystem.MinMaxCurve sSpeed = main.startSpeed;
-        main.startSpeed = MultiplyMinMaxCurve(sSpeed, scale);
-    }
-    //Multiply or divide ParticleSystem.MinMaxCurve with given value
-    private ParticleSystem.MinMaxCurve MultiplyMinMaxCurve(ParticleSystem.MinMaxCurve curve, float value, bool multiply = true)
-    {
-        if (multiply)
-        {
-            curve.curveMultiplier *= value;
-            curve.constantMin *= value;
-            curve.constantMax *= value;
-        }
-        else
-        {
-            curve.curveMultiplier /= value;
-            curve.constantMin /= value;
-            curve.constantMax /= value;
-        }
-        MultiplyCurveKeys(curve.curveMin, value, multiply);
-        MultiplyCurveKeys(curve.curveMax, value, multiply);
-        return curve;
-    }
-
-    //Multiply or divide all keys of an AnimationCurve with given value
-    private void MultiplyCurveKeys(AnimationCurve curve, float value, bool multiply = true)
-    {
-        if (curve == null) { return; }
-        if (multiply)
-            for (int i = 0; i < curve.keys.Length; i++) { curve.keys[i].value *= value; }
-        else
-            for (int i = 0; i < curve.keys.Length; i++) { curve.keys[i].value /= value; }
-    }
-}
 }
