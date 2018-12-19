@@ -44,13 +44,14 @@ public class CenterSphere : MonoBehaviour {
                 meshfilters[i].sharedMesh = new Mesh();
             }
             terrainFaces[i] = new SphereTerrain(shapegenerator, meshfilters[i].sharedMesh, resolution, directions[i]);
-
         }
     }
 
     private void Update()
     {
+        /*Debug.Log("Hello");
         Mesh m = GetComponent<MeshFilter>().mesh;
+        
 
         Vector3[] vertices = m.vertices;
         for (int i = 0; i < vertices.Length; i++)
@@ -59,9 +60,12 @@ public class CenterSphere : MonoBehaviour {
         }
         m.vertices = vertices;
         m.RecalculateBounds();
-        m.RecalculateNormals();
+        m.RecalculateNormals();*/
+        //float noise = Mathf.PerlinNoise(10000 + x / 100, 10000 + y / 100);
+        Initialise();
+        GenMesh();
     }
-
+    /*
     public static float SampleCell3(float x, float y)
     {
         float flatness = 0.2f;
@@ -80,7 +84,7 @@ public class CenterSphere : MonoBehaviour {
         }
 
         return (noise * 300) + (Mathf.PerlinNoise(1000 + x / 5, 100 + y / 5) * 2);
-    }
+    }*/
 
     public void GenSphere()
     {

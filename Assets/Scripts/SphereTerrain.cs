@@ -13,6 +13,7 @@ public class SphereTerrain {
 
     public SphereTerrain(ShapeGenerator shapeGenerator, Mesh mesh, int resolution, Vector3 locUp)
     {
+        this.shapeGenerator = shapeGenerator;
         this.mesh = mesh;
         this.resolution = resolution;
         this.locUp = locUp;
@@ -31,10 +32,14 @@ public class SphereTerrain {
             for (int j = 0; j < resolution; j++)
             {
                 int vertex = i + j * resolution;
+
+                float noise = Mathf.PerlinNoise(i, j);
+
                 Vector2 percent = new Vector2(i, j) / (resolution - 1);//used to define where each vertex should be on the face
-                Vector3 PointOnCube = locUp + (percent.x - 0.5f) * 2 * AxisA + (percent.y - 0.5f) * 2 * AxisB;
+                Vector3 PointOnCube = locUp + (percent.x - 0.5f) * 2 * AxisA + (percent.y - 0.5f) * 2 * AxisB;//shape of meshes
                 Vector3 pointOnSphere = PointOnCube.normalized;//make all triangles same distance from center
-                vertices[vertex] = pointOnSphere;//vertex on the sphere
+                //vertices[vertex] = pointOnSphere;//vertex on the sphere
+                vertices[vertex] = shapeGenerator.calcPoint(pointOnSphere);
 
                 if (j != resolution - 1 && i != resolution - 1)
                 {
