@@ -17,7 +17,7 @@ public class CenterSphere : MonoBehaviour {
 
     private void OnValidate()
     {
-        GenSphere();
+        //GenSphere();
     }
 
     void Initialise()
@@ -66,6 +66,7 @@ public class CenterSphere : MonoBehaviour {
             Vector3[] directions = { Vector3.up, Vector3.down, Vector3.left, Vector3.right, Vector3.forward, Vector3.back };
             terrainFaces[i] = new SphereTerrain(shapegenerator, meshfilters[i].sharedMesh, Mathf.RoundToInt(resolution * (MusicAnalyser.bands[4] * 35)), directions[i]);
         }*/
+        GenSphere();
     }
   
 
