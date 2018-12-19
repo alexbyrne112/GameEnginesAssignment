@@ -5,7 +5,7 @@ using UnityEngine;
 public class CubeCircle : MonoBehaviour {
     public float scale = 10;
     List<GameObject> sphs = new List<GameObject>();
-    GameObject sphere;
+    GameObject Ball;
     public float radius = 1;
     public GameObject OrbPrefab;
 
@@ -14,7 +14,7 @@ public class CubeCircle : MonoBehaviour {
     // Use this for initialization
     void Start () {
         CreateCubeCircle();
-        //CreateSphere();
+        CreateBall();
     }
 
     void CreateCubeCircle()
@@ -26,26 +26,23 @@ public class CubeCircle : MonoBehaviour {
             pos = transform.TransformPoint(pos);
             Quaternion quat = Quaternion.AngleAxis(theta * i * Mathf.Rad2Deg, Vector3.up);
             quat = transform.rotation * quat;
-
-            //GameObject sph = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            
             GameObject sph = Instantiate(OrbPrefab);
             sph.AddComponent<MeshRenderer>();
             sph.transform.SetPositionAndRotation(pos, quat); ;
             sph.transform.parent = this.transform;
-            //sph.GetComponent<Renderer>().material.color = new Color(i + (float)MusicAnalyser.bands.Length, 1, 1);
-            //sph.AddComponent<SphereCollider>();
             sphs.Add(sph);
         }
     }
 
-    void CreateSphere()
+    void CreateBall()
     {
-        Vector3 Spos = new Vector3(0, 3, 0);
-        sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        sphere.transform.position = Spos;
-        sphere.transform.parent = this.transform;
-        sphere.transform.localScale = new Vector3(10,10,10);
-        sphere.GetComponent<Renderer>().material.color = new Color((float)MusicAnalyser.bands.Length, 1, 1);
+        Vector3 Spos = new Vector3(0, 20, 0);
+        Ball = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        Ball.transform.position = Spos;
+        Ball.transform.parent = this.transform;
+        Ball.transform.localScale = new Vector3(10,10,10);
+        Ball.GetComponent<Renderer>().material.color = new Color((float)MusicAnalyser.bands.Length, 1, 1);
     }
 
 
@@ -53,11 +50,11 @@ public class CubeCircle : MonoBehaviour {
     void Update () {
         transform.Rotate(Vector3.down * Time.deltaTime*20);
 
-       /* Vector3 sv = sphere.transform.localScale;
+        Vector3 sv = Ball.transform.localScale;
         sv.x = Mathf.Lerp(sv.x, 1 + (MusicAnalyser.bands[6] * scale), Time.deltaTime * 3.0f);
         sv.y = Mathf.Lerp(sv.y, 1 + (MusicAnalyser.bands[2] * scale), Time.deltaTime * 3.0f);
         sv.z = Mathf.Lerp(sv.z, 1 + (MusicAnalyser.bands[8] * scale), Time.deltaTime * 3.0f);
-        sphere.transform.localScale = sv;*/
+        Ball.transform.localScale = sv;
 
         for (int i = 0; i < sphs.Count; i++)
         {

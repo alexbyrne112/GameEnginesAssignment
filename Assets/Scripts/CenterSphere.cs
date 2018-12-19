@@ -64,32 +64,13 @@ public class CenterSphere : MonoBehaviour {
         //float noise = Mathf.PerlinNoise(10000 + x / 100, 10000 + y / 100);
         Initialise();
         GenMesh();
+        Debug.Log("Hello");
     }
-    /*
-    public static float SampleCell3(float x, float y)
-    {
-        float flatness = 0.2f;
-        float noise = Mathf.PerlinNoise(10000 + x / 100, 10000 + y / 100);
-        if (noise > 0.5f + flatness)
-        {
-            noise = noise - flatness;
-        }
-        else if (noise < 0.5f - flatness)
-        {
-            noise = noise + flatness;
-        }
-        else
-        {
-            noise = 0.5f;
-        }
-
-        return (noise * 300) + (Mathf.PerlinNoise(1000 + x / 5, 100 + y / 5) * 2);
-    }*/
+  
 
     public void GenSphere()
     {
-        Initialise();
-        GenMesh();
+       
         //GenColor();
     }
     void GenMesh()
