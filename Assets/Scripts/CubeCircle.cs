@@ -14,7 +14,7 @@ public class CubeCircle : MonoBehaviour {
     // Use this for initialization
     void Start () {
         CreateCubeCircle();
-        CreateSphere();
+        //CreateSphere();
     }
 
     void CreateCubeCircle()
