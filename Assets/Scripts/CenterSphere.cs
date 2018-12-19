@@ -4,13 +4,50 @@ using UnityEngine;
 
 public class CenterSphere : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    [Range(2, 256)]
+    public int resolution = 10;
+
+    [SerializeField, HideInInspector]
+    MeshFilter[] meshfilters;
+    SphereTerrain[] terrainFaces;
+
+    private void OnValidate()
+    {
+        Initialise();
+        GenMesh();
+    }
+
+    void Initialise()
+    {
+        if(meshfilters == null || meshfilters.Length == 0)
+        {
+            meshfilters = new MeshFilter[6];
+        }
+        terrainFaces = new SphereTerrain[6];
+
+        Vector3[] directions = {Vector3.up, Vector3.down, Vector3.left, Vector3.right, Vector3.forward, Vector3.back };
+
+        for(int i =0; i< 6; i++)
+        {
+            if(meshfilters[i] ==null)
+            {
+                GameObject meshObj = new GameObject("mesh");
+                meshObj.transform.parent = transform;
+
+                meshObj.AddComponent<MeshRenderer>().sharedMaterial = new Material(Shader.Find("Standard"));
+                meshfilters[i] = meshObj.AddComponent<MeshFilter>();
+                meshfilters[i].sharedMesh = new Mesh();
+            }
+            terrainFaces[i] = new SphereTerrain(meshfilters[i].sharedMesh, resolution, directions[i]);
+        }
+    }
+
+    void GenMesh()
+    {
+        foreach(SphereTerrain face in terrainFaces)
+        {
+            face.ConstructMesh();
+        }
+    }
 }
