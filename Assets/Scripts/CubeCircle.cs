@@ -63,9 +63,9 @@ public class CubeCircle : MonoBehaviour {
                 //ScaleParticleValues(p);
             }
             
-            Vector3 OrbPos = sphs[i].transform.position;
+            /*Vector3 OrbPos = sphs[i].transform.position;
             OrbPos.y = Mathf.Lerp(OrbPos.y, 1 + (MusicAnalyser.bands[i] * scale), Time.deltaTime);
-            sphs[i].transform.position = OrbPos;
+            sphs[i].transform.position = OrbPos;*/
         }
     }
 }
