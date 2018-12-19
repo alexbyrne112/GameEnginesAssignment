@@ -37,7 +37,7 @@ public class CubeCircle : MonoBehaviour {
 
     void CreateBall()
     {
-        Vector3 Spos = new Vector3(0, 60, 0);
+        Vector3 Spos = new Vector3(0, 5, 0);
         Ball = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         Ball.transform.position = Spos;
         Ball.transform.parent = this.transform;
@@ -51,19 +51,13 @@ public class CubeCircle : MonoBehaviour {
         transform.Rotate(Vector3.down * Time.deltaTime*20);
 
         Vector3 sv = Ball.transform.localScale;
-        sv.x = Mathf.Lerp(sv.x, 1 + (MusicAnalyser.bands[6] * scale), Time.deltaTime * 3.0f);
-        sv.y = Mathf.Lerp(sv.y, 1 + (MusicAnalyser.bands[2] * scale), Time.deltaTime * 3.0f);
-        sv.z = Mathf.Lerp(sv.z, 1 + (MusicAnalyser.bands[8] * scale), Time.deltaTime * 3.0f);
+        sv.x = Mathf.Lerp(sv.x, 1 + (MusicAnalyser.bands[6] * scale)*2, Time.deltaTime * 3.0f);
+        sv.y = Mathf.Lerp(sv.y, 1 + (MusicAnalyser.bands[2] * scale)*2, Time.deltaTime * 3.0f);
+        sv.z = Mathf.Lerp(sv.z, 1 + (MusicAnalyser.bands[8] * scale)*2, Time.deltaTime * 3.0f);
         Ball.transform.localScale = sv;
 
         for (int i = 0; i < sphs.Count; i++)
         {
-            /*
-            Vector3 ts = sphs[i].transform.localScale;
-            ts.y = Mathf.Lerp(ts.y, 1 + (MusicAnalyser.bands[i] * scale), Time.deltaTime * 3.0f);
-            ts.x = Mathf.Lerp(ts.y, 1 + (MusicAnalyser.bands[i] * scale), Time.deltaTime * 3.0f);
-            ts.z = Mathf.Lerp(ts.y, 1 + (MusicAnalyser.bands[i] * scale), Time.deltaTime * 3.0f);m              (MusicAnalyser.bands[i]* 2)
-            sphs[i].transform.localScale = ts;*/
             parts = sphs[i].GetComponentsInChildren<ParticleSystem>();
             Debug.Log(parts.Length);
             for (int s =0; s < parts.Length; s++) 
