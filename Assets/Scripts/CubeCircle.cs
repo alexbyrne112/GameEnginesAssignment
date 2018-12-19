@@ -77,12 +77,11 @@ public class CubeCircle : MonoBehaviour {
                 curve.AddKey(1.0f, 1.0f);
 
                 SOL.size = new ParticleSystem.MinMaxCurve(1 + MusicAnalyser.bands[i], 1);
-                //ScaleParticleValues(p);
             }
             
-            /*Vector3 OrbPos = sphs[i].transform.position;
+            Vector3 OrbPos = sphs[i].transform.position;
             OrbPos.y = Mathf.Lerp(OrbPos.y, 1 + (MusicAnalyser.bands[i] * scale), Time.deltaTime);
-            sphs[i].transform.position = OrbPos;*/
+            sphs[i].transform.position = OrbPos;
         }
     }
 }
