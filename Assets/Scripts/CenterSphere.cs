@@ -8,6 +8,9 @@ public class CenterSphere : MonoBehaviour {
     [Range(2, 256)]
     public int resolution = 10;
 
+    public ShapeSetting shapesetting;
+    public ColorSettings colorsetting;
+
     [SerializeField, HideInInspector]
     MeshFilter[] meshfilters;
     SphereTerrain[] terrainFaces;
@@ -49,6 +52,14 @@ public class CenterSphere : MonoBehaviour {
         foreach(SphereTerrain face in terrainFaces)
         {
             face.ConstructMesh();
+        }
+    }
+
+    void GenColor()
+    {
+        foreach (MeshFilter m in meshfilters)
+        {
+            m.GetComponent<MeshRenderer>().sharedMaterial.color = new Color(255, 0, 255, 255);
         }
     }
 }
