@@ -8,8 +8,9 @@ public class CenterSphere : MonoBehaviour {
     [Range(2, 256)]
     public int resolution = 10;
 
-    public ShapeSetting shapesetting;
-    public ColorSettings colorsetting;
+    public ShapeSetting shapesettings;
+    public ColorSettings colorsettings;
+    ShapeGenerator shapegenerator;
 
     [SerializeField, HideInInspector]
     MeshFilter[] meshfilters;
@@ -23,6 +24,7 @@ public class CenterSphere : MonoBehaviour {
 
     void Initialise()
     {
+        shapegenerator = new ShapeGenerator(shapesettings);
         if(meshfilters == null || meshfilters.Length == 0)
         {
             meshfilters = new MeshFilter[6];
@@ -43,8 +45,28 @@ public class CenterSphere : MonoBehaviour {
                 meshfilters[i] = meshObj.AddComponent<MeshFilter>();
                 meshfilters[i].sharedMesh = new Mesh();
             }
-            terrainFaces[i] = new SphereTerrain(meshfilters[i].sharedMesh, resolution, directions[i]);
+            terrainFaces[i] = new SphereTerrain(shapegenerator, meshfilters[i].sharedMesh, resolution, directions[i]);
+
         }
+    }
+
+    public void GenSphere()
+    {
+        Initialise();
+        GenMesh();
+        GenColor();
+    }
+
+    public void ShapeUpdate()
+    {
+        Initialise();
+        GenMesh();
+    }
+
+    public void ColorUpdate()
+    {
+        Initialise();
+        GenColor();
     }
 
     void GenMesh()
@@ -59,7 +81,7 @@ public class CenterSphere : MonoBehaviour {
     {
         foreach (MeshFilter m in meshfilters)
         {
-            m.GetComponent<MeshRenderer>().sharedMaterial.color = new Color(255, 0, 255, 255);
+            m.GetComponent<MeshRenderer>().sharedMaterial.color = colorsettings.SphereColor;
         }
     }
 }

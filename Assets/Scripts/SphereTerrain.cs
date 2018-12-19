@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class SphereTerrain {
 
+    ShapeGenerator shapeGenerator;
     Mesh mesh;
     int resolution;
     Vector3 locUp;
     Vector3 AxisA;
     Vector3 AxisB;
 
-    public SphereTerrain(Mesh mesh, int resolution, Vector3 locUp)
+    public SphereTerrain(ShapeGenerator shapeGenerator, Mesh mesh, int resolution, Vector3 locUp)
     {
         this.mesh = mesh;
         this.resolution = resolution;

@@ -4,5 +4,5 @@ using UnityEngine;
 
 [CreateAssetMenu()]
 public class ShapeSetting : ScriptableObject {
-    public float Sradius = 1;
+    public float SphereRadius = 1;
 }
