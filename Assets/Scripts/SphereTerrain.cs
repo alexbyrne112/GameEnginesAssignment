@@ -32,7 +32,8 @@ public class SphereTerrain {
                 int vertex = i + j * resolution;
                 Vector2 percent = new Vector2(i, j) / (resolution - 1);//used to define where each vertex should be on the face
                 Vector3 PointOnCube = locUp + (percent.x - 0.5f) * 2 * AxisA + (percent.y - 0.5f) * 2 * AxisB;
-                vertices[vertex] = PointOnCube;//vertex on the cube
+                Vector3 pointOnSphere = PointOnCube.normalized;//make all triangles same distance from center
+                vertices[vertex] = pointOnSphere;//vertex on the sphere
 
                 if (j != resolution - 1 && i != resolution - 1)
                 {
