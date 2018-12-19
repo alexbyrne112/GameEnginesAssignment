@@ -28,10 +28,6 @@ public class CubeCircle : MonoBehaviour {
             //GameObject sph = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             GameObject sph = Instantiate(OrbPrefab);
             sph.AddComponent<MeshRenderer>();
-
-            parts = sph.GetComponentsInChildren<ParticleSystem>();
-            Debug.Log(parts.Length);
-
             sph.transform.SetPositionAndRotation(pos, quat); ;
             sph.transform.parent = this.transform;
             sph.GetComponent<Renderer>().material.color = new Color(i + (float)MusicAnalyser.bands.Length, 1, 1);
@@ -49,23 +45,26 @@ public class CubeCircle : MonoBehaviour {
             Vector3 ts = sphs[i].transform.localScale;
             ts.y = Mathf.Lerp(ts.y, 1 + (MusicAnalyser.bands[i] * scale), Time.deltaTime * 3.0f);
             ts.x = Mathf.Lerp(ts.y, 1 + (MusicAnalyser.bands[i] * scale), Time.deltaTime * 3.0f);
-            ts.z = Mathf.Lerp(ts.y, 1 + (MusicAnalyser.bands[i] * scale), Time.deltaTime * 3.0f);
+            ts.z = Mathf.Lerp(ts.y, 1 + (MusicAnalyser.bands[i] * scale), Time.deltaTime * 3.0f);m              (MusicAnalyser.bands[i]* 2)
             sphs[i].transform.localScale = ts;*/
+            parts = sphs[i].GetComponentsInChildren<ParticleSystem>();
+            Debug.Log(parts.Length);
             for (int s =0; s < parts.Length; s++) 
             {
                 ParticleSystem p = parts[s];
-                Debug.Log(i);
-                Debug.Log(s);
+                Debug.Log("Orbs"+i);
+                Debug.Log("Particle System" + s);
                 var SOL = p.sizeOverLifetime;
                 SOL.enabled = true;
-
+                /*
                 AnimationCurve curve = new AnimationCurve();
                 curve.AddKey(0.0f, 0.0f);
-                curve.AddKey(1.0f, 1.0f);
+                curve.AddKey(1.0f, 1.0f);*/
 
-                SOL.size = new ParticleSystem.MinMaxCurve(1, (MusicAnalyser.bands[i]* 5));
+                SOL.size = new ParticleSystem.MinMaxCurve((Mathf.Lerp(1, 1 + (MusicAnalyser.bands[i] * scale), Time.deltaTime * 3.0f)), 1);
                 //ScaleParticleValues(p);
             }
+            
             Vector3 OrbPos = sphs[i].transform.position;
             OrbPos.y = Mathf.Lerp(OrbPos.y, 1 + (MusicAnalyser.bands[i] * scale), Time.deltaTime);
             sphs[i].transform.position = OrbPos;
