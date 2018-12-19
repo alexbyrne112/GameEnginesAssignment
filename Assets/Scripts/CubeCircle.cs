@@ -40,7 +40,7 @@ public class CubeCircle : MonoBehaviour {
 
     void CreateSphere()
     {
-        Vector3 Spos = new Vector3(0, 0, 0);
+        Vector3 Spos = new Vector3(0, 3, 0);
         sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         sphere.transform.position = Spos;
         sphere.transform.parent = this.transform;
@@ -52,6 +52,13 @@ public class CubeCircle : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         transform.Rotate(Vector3.down * Time.deltaTime*20);
+
+        Vector3 sv = sphere.transform.localScale;
+        sv.x = Mathf.Lerp(sv.x, 1 + (MusicAnalyser.bands[6] * scale), Time.deltaTime * 3.0f);
+        sv.y = Mathf.Lerp(sv.y, 1 + (MusicAnalyser.bands[2] * scale), Time.deltaTime * 3.0f);
+        sv.z = Mathf.Lerp(sv.z, 1 + (MusicAnalyser.bands[8] * scale), Time.deltaTime * 3.0f);
+        sphere.transform.localScale = sv;
+
         for (int i = 0; i < sphs.Count; i++)
         {
             /*
