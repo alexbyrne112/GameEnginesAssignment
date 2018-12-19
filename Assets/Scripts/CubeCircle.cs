@@ -56,12 +56,12 @@ public class CubeCircle : MonoBehaviour {
                 Debug.Log("Particle System" + s);
                 var SOL = p.sizeOverLifetime;
                 SOL.enabled = true;
-                /*
+                
                 AnimationCurve curve = new AnimationCurve();
                 curve.AddKey(0.0f, 0.0f);
-                curve.AddKey(1.0f, 1.0f);*/
+                curve.AddKey(1.0f, 1.0f);
 
-                SOL.size = new ParticleSystem.MinMaxCurve((Mathf.Lerp(1, 1 + (MusicAnalyser.bands[i] * scale), Time.deltaTime * 3.0f)), 1);
+                SOL.size = new ParticleSystem.MinMaxCurve(1 + MusicAnalyser.bands[i], 1);
                 //ScaleParticleValues(p);
             }
             
