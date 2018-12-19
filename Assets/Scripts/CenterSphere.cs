@@ -34,6 +34,7 @@ public class CenterSphere : MonoBehaviour {
             {
                 GameObject meshObj = new GameObject("mesh");
                 meshObj.transform.parent = transform;
+                meshObj.transform.localScale = new Vector3(10, 10, 10);
 
                 meshObj.AddComponent<MeshRenderer>().sharedMaterial = new Material(Shader.Find("Standard"));
                 meshfilters[i] = meshObj.AddComponent<MeshFilter>();
