@@ -74,7 +74,7 @@ public class CubeCircle : MonoBehaviour {
             }
             
             Vector3 OrbPos = sphs[i].transform.position;
-            OrbPos.y = Mathf.Lerp(OrbPos.y, 1 + (MusicAnalyser.bands[i] * scale), Time.deltaTime);
+            OrbPos.y = Mathf.Lerp(OrbPos.y, 1 + (MusicAnalyser.bands[i] * scale)*2, Time.deltaTime);
             sphs[i].transform.position = OrbPos;
         }
     }
