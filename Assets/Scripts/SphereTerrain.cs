@@ -49,6 +49,10 @@ public class SphereTerrain {
                 }
             }
         }
+        //assign calculations to mesh
+        mesh.vertices = vertices;
+        mesh.triangles = triangles;
+        mesh.RecalculateNormals();// and normalise it
     }
 
 	// Use this for initialization
