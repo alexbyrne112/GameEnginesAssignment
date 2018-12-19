@@ -37,7 +37,7 @@ public class CubeCircle : MonoBehaviour {
 
     void CreateBall()
     {
-        Vector3 Spos = new Vector3(0, 20, 0);
+        Vector3 Spos = new Vector3(0, 60, 0);
         Ball = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         Ball.transform.position = Spos;
         Ball.transform.parent = this.transform;
