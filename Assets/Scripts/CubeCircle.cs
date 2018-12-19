@@ -52,8 +52,6 @@ public class CubeCircle : MonoBehaviour {
             for (int s =0; s < parts.Length; s++) 
             {
                 ParticleSystem p = parts[s];
-                Debug.Log("Orbs"+i);
-                Debug.Log("Particle System" + s);
                 var SOL = p.sizeOverLifetime;
                 SOL.enabled = true;
                 
