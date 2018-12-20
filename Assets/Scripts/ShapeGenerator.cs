@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//For Generating the Sphere with the points Vertices calculated
 public class ShapeGenerator{
     ShapeSetting settings;
     NoiseFilter noiseFilter;
-
+    //Constructor
     public ShapeGenerator(ShapeSetting settings)
     {
         this.settings = settings;

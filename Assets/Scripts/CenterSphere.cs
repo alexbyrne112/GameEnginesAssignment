@@ -25,6 +25,7 @@ public class CenterSphere : MonoBehaviour {
         terrainFaces = new SphereTerrain[6];
 
         Vector3[] directions = {Vector3.up, Vector3.down, Vector3.left, Vector3.right, Vector3.forward, Vector3.back };
+
         //6 sides of a cube (sphere) 
         for(int i =0; i< 6; i++)
         {
