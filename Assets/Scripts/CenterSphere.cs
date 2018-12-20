@@ -48,24 +48,6 @@ public class CenterSphere : MonoBehaviour {
 
     private void Update()
     {
-        /*Debug.Log("Hello");
-        Mesh m = GetComponent<MeshFilter>().mesh;
-        
-
-        Vector3[] vertices = m.vertices;
-        for (int i = 0; i < vertices.Length; i++)
-        {
-            vertices[i].y = SampleCell3(transform.position.x + vertices[i].x, transform.position.z + vertices[i].z);
-        }
-        m.vertices = vertices;
-        m.RecalculateBounds();
-        m.RecalculateNormals();
-        float noise = Mathf.PerlinNoise(10000 + x / 100, 10000 + y / 100);
-        for (int i = 0; i < 6; i++)
-        {
-            Vector3[] directions = { Vector3.up, Vector3.down, Vector3.left, Vector3.right, Vector3.forward, Vector3.back };
-            terrainFaces[i] = new SphereTerrain(shapegenerator, meshfilters[i].sharedMesh, Mathf.RoundToInt(resolution * (MusicAnalyser.bands[4] * 35)), directions[i]);
-        }*/
         GenSphere();
     }
   
