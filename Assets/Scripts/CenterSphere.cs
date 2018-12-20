@@ -24,6 +24,7 @@ public class CenterSphere : MonoBehaviour {
         }
         terrainFaces = new SphereTerrain[6];
 
+        //Vectors for positioning the Sides
         Vector3[] directions = {Vector3.up, Vector3.down, Vector3.left, Vector3.right, Vector3.forward, Vector3.back };
 
         //6 sides of a cube (sphere) 
@@ -47,12 +48,13 @@ public class CenterSphere : MonoBehaviour {
         GenSphere();
     }
   
-
+    //generates the Sphere
     public void GenSphere()
     {
         Initialise();
         GenMesh();
     }
+    //generates the meshes
     void GenMesh()
     {
         foreach(SphereTerrain face in terrainFaces)
