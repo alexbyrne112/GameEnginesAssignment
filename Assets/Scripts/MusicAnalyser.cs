@@ -35,6 +35,7 @@ public class MusicAnalyser : MonoBehaviour {
         GetBands();
     }
 
+    //gets the frequency bands to imporve and cluster the samples together so they can be displayed easier
     void GetBands()
     {
         for(int i= 0; i< bands.Length; i++)
