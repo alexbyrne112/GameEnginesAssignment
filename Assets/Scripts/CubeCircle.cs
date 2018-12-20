@@ -40,18 +40,15 @@ public class CubeCircle : MonoBehaviour {
 
         for (int i = 0; i < sphs.Count; i++)
         {
+
             parts = sphs[i].GetComponentsInChildren<ParticleSystem>();
             Debug.Log(parts.Length);
             for (int s =0; s < parts.Length; s++) 
             {
+                //Increases the scale of the PS
                 ParticleSystem p = parts[s];
                 var SOL = p.sizeOverLifetime;
                 SOL.enabled = true;
-                
-                AnimationCurve curve = new AnimationCurve();
-                curve.AddKey(0.0f, 0.0f);
-                curve.AddKey(1.0f, 1.0f);
-
                 SOL.size = new ParticleSystem.MinMaxCurve(1 + MusicAnalyser.bands[i], 1);
             }
             //Lerps orbs up and down on the Y axis
