@@ -20,6 +20,7 @@ public class CubeCircle : MonoBehaviour {
         float theta = (Mathf.PI * 2.0f) / (float)MusicAnalyser.bands.Length;
         for (int i = 0; i < MusicAnalyser.bands.Length; i++)
         {
+            //Creates the Circle or Orbs
             Vector3 pos = new Vector3(Mathf.Sin(theta * i) * 30, 0, Mathf.Cos(theta * i) * 30);
             pos = transform.TransformPoint(pos);
             Quaternion quat = Quaternion.AngleAxis(theta * i * Mathf.Rad2Deg, Vector3.up);

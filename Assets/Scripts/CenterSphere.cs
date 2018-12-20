@@ -15,11 +15,6 @@ public class CenterSphere : MonoBehaviour {
     MeshFilter[] meshfilters;
     SphereTerrain[] terrainFaces;
 
-    private void OnValidate()
-    {
-        //GenSphere();
-    }
-
     void Initialise()
     {
         shapegenerator = new ShapeGenerator(shapesettings);

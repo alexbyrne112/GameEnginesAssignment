@@ -9,7 +9,7 @@ public class NoiseFilter {
     
     public float Evaluate(Vector3 point)
     {
-        float noiseValue = (noise.Evaluate(point)+1) *(MusicAnalyser.bands[6] * 0.5f);
+        float noiseValue = (noise.Evaluate(point)+1) *(MusicAnalyser.bands[5] * 0.5f);
         return noiseValue;
     }
 }
