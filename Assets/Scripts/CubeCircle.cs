@@ -54,7 +54,7 @@ public class CubeCircle : MonoBehaviour {
 
                 SOL.size = new ParticleSystem.MinMaxCurve(1 + MusicAnalyser.bands[i], 1);
             }
-            
+            //Lerps orbs up and down on the Y axis
             Vector3 OrbPos = sphs[i].transform.position;
             OrbPos.y = Mathf.Lerp(OrbPos.y, 1 + (MusicAnalyser.bands[i] * scale)*2, Time.deltaTime);
             sphs[i].transform.position = OrbPos;
