@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NoiseFilter {
 
+    //Class for the noise filter which uses the open source Noise Script and multiplies the function by the AudioSampla
     Noise noise = new Noise();
     
     public float Evaluate(Vector3 point)
